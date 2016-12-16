@@ -1,17 +1,18 @@
 var path = require('path');
-var wabpack = require('webpack');
+var webpack = require('webpack');
 const node_modules_dir = path.resolve(__dirname,"node_modules");
 
-var config = {
+module.exports = {
     devtool:'eval',
-    entry:{
-
+    entry: {
+        entry: [
+          './example/index.js'
+        ]
     },
-    output:{
-        path:path.join(__dirname,'dest'),
-        filename:'[name].js',
-        publicPath:'/deploy/'
-    }
+    output: {
+      path: path.join(__dirname, 'dest'),
+      filename: 'react-material-dialog.js'
+    },
     plugins:[
         new webpack.optimize.UglifyJsPlugin({
             compress:{
@@ -20,8 +21,8 @@ var config = {
             output:{
                 comments:false
             }
-        }),
-        new webpack.HotModuleReplacementPlugin()
+        })
+        // new webpack.HotModuleReplacementPlugin()
     ],
     module:{
         loaders: [
@@ -29,14 +30,14 @@ var config = {
                 test: /\.css$/,
                 loader: 'style!css?module&localIdentName=[hash:base64:5]&-url'
             },
-            {
-                test: /\.less$/,
-                loader: 'style!less'
-            },
-            {
-                test: /\.sass$/,
-                loader: 'style!sass'
-            },
+            // {
+            //     test: /\.less$/,
+            //     loader: 'style!less'
+            // },
+            // {
+            //     test: /\.sass$/,
+            //     loader: 'style!sass'
+            // },
             // {
             //   test: /\.jsx?$/,
             //   loaders: ['react-hot', 'babel'],
@@ -50,24 +51,24 @@ var config = {
                 query: {
                     presets: ['es2015']
                 }
-            },
-            {
-                test: /\.(png|jpg)$/,
-                exclude: [node_modules_dir],
-                loader: 'url?limit=6400'
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
             }
+            // {
+            //     test: /\.(png|jpg)$/,
+            //     exclude: [node_modules_dir],
+            //     loader: 'url?limit=6400'
+            // },
+            // {
+            //     test: /\.json$/,
+            //     loader: 'json'
+            // }
         ]
-    },
-    devServer:{
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        stats: "error-only",
-        host:'0.0.0.0',
-        port: 1100
     }
+    // devServer:{
+    //     historyApiFallback: true,
+    //     hot: true,
+    //     inline: true,
+    //     stats: "error-only",
+    //     host:'0.0.0.0',
+    //     port: 1100
+    // }
 }

@@ -8,7 +8,7 @@ var config = {
       entry: [
         'webpack-dev-server/client?http://0.0.0.0:1100',
         'webpack/hot/dev-server',
-        './index.js'
+        './example/index.js'
       ],
       common: [
         'webpack-dev-server/client?http://0.0.0.0:1100',

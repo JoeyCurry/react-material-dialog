@@ -2,8 +2,11 @@
   "name": "react-material-dialog",
   "version": "1.0.0",
   "description": "a js dialog with material-design,write by react",
-  "main": "index.js",
+  "main": "entry.js",
   "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js --progress --config deploy.config.js",
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --config dev.config.js",
+    "deploy": "./node_modules/webpack/bin/webpack.js --progress --config deploy.config.js",
     "test": "make test"
   },
   "keywords": [
@@ -19,6 +22,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-3": "^6.11.0",
+    "classnames": "^2.2.5",
     "css-loader": "^0.23.1",
     "file-loader": "^0.9.0",
     "json-loader": "^0.5.4",
